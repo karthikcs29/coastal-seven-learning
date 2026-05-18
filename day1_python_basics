@@ -1,0 +1,60 @@
+'''
+day1_python_basics
+1 Variables
+2 data types
+3 conditions
+4 loops
+5 functions
+6 debugging using print/logging
+7 understanding error & stack trace
+'''
+# 1 variables
+x = 46
+name = "kaka"
+print(x)
+
+# 2 data types
+x = ("hello world")
+print(type("hello world"))
+
+# 3 conditions
+age = 18
+if age >= 18:
+    print("you are eligible to vote")
+# 4 loops
+for i in range(46):
+    print(i)
+
+x = 46
+
+while x >= 10:
+    print(x)
+    x -= 46
+# 5 functions
+def greet(name):
+    return ("hello",name)
+print(greet("kaka"))
+
+#debugging using print/logging
+def divide(a, b):
+    print("a:", a)
+    print("b:", b)
+    result = a/b
+    print("result:", result)
+    return result
+divide(10, 2)
+
+#using logging
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logging.debug("Debug message")
+logging.info("Information message")
+logging.warning("Warning message")
+logging.error("Error message")
+logging.critical("Critical message")
+
+# understanding error & stack trace
+def divide(a, b):
+    return a/b 
+
