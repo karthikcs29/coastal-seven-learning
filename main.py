@@ -4,7 +4,7 @@ print(name)
 print(age)
 print(course)
 
-thistuple = ("apple", "banana", "cherry")
+thistuple = ("apple", "orange", "cherry")
 y = list(thistuple)
 y.append("orange")
 thistuple = tuple(y)
