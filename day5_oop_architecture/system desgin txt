@@ -1,0 +1,36 @@
+Users
+                       ↓
+                     DNS
+                       ↓
+                     CDN
+                       ↓
+                Web/Application Firewall
+                       ↓
+                 Load Balancer
+                       ↓
+        ┌──────── Application Layer ────────┐
+        ↓               ↓                  ↓
+    Auth Service    User Service      Feed Service
+        ↓               ↓                  ↓
+        └──────────── API Gateway ─────────┘
+                       ↓
+              Cache Layer (Redis)
+                       ↓
+          ┌──────── Database Layer ────────┐
+          ↓               ↓                ↓
+      SQL DB         NoSQL DB         Search DB
+          ↓
+      Read Replicas
+                       ↓
+               Message Queue
+                       ↓
+        ┌──────── Background Workers ──────┐
+        ↓               ↓                  ↓
+   Email Service   Notification      Media Processing
+                                          ↓
+                                      Object Storage
+                                          ↓
+                                      Analytics
+                                          ↓
+                                   Monitoring & Logs
+                                   
