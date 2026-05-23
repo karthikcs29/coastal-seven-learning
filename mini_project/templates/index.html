@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Movie Database</title>
+</head>
+<body>
+  <h1>Movie Database</h1>
+  <form id="movieForm">
+    <input id="title" placeholder="Title" required>
+    <input id="director" placeholder="Director">
+    <input id="year" placeholder="Year" type="number">
+    <input id="genre" placeholder="Genre">
+    <input id="rating" placeholder="Rating" type="number" step="0.1">
+    <button type="submit">Add Movie</button>
+  </form>
+  <ul id="movieList"></ul>
+
+  <script>
+    const apiUrl = "/movies";
+
+    async function loadMovies() {
+      const res = await fetch(apiUrl);
+      const movies = await res.json();
+      const list = document.getElementById("movieList");
+      list.innerHTML = "";
+      movies.forEach(m => {
+        const li = document.createElement("li");
+        li.textContent = `${m.title} (${m.year}) - ${m.genre} - ⭐ ${m.rating}`;
+        list.appendChild(li);
+      });
+    }
+
+    document.getElementById("movieForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const movie = {
+        title: document.getElementById("title").value,
+        director: document.getElementById("director").value,
+        year: parseInt(document.getElementById("year").value),
+        genre: document.getElementById("genre").value,
+        rating: parseFloat(document.getElementById("rating").value)
+      };
+      await fetch(apiUrl, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(movie)
+      });
+      loadMovies();
+    });
+
+    loadMovies();
+  </script>
+</body>
+</html>
